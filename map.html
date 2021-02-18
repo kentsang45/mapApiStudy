@@ -1,0 +1,114 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>지도 생성하기</title>
+
+</head>
+<body>
+<!-- 지도를 표시할 div 입니다 -->
+<div id="map" style="width:100%;height:100%;"></div>
+
+<!-- 맛집 정보를 보여주는 div 입니다 -->
+
+
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42b464dbc4f0eb1befb41f996f717a37"></script>
+<script>
+    // 1. 지도 만들기
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(37.503266460295926, 127.02428068228997), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+</script>
+
+<script>
+    // 2. 마커 여러개 표시하기
+    // 마커를 표시할 위치와 title 객체 배열입니다
+    var positions = [
+        {
+            title: '사이공리',
+            latlng: new kakao.maps.LatLng(37.50708072, 126.939729)
+        },
+        {
+            title: '멘야시노기',
+            latlng: new kakao.maps.LatLng(37.503888, 127.020795)
+        },
+        {
+            title: '영동족발',
+            latlng: new kakao.maps.LatLng(37.48477547, 127.0379592)
+        },
+        {
+            title: '불불이족발',
+            latlng: new kakao.maps.LatLng(37.45639317, 126.8996724)
+        },
+        {
+            title: '홍보성',
+            latlng: new kakao.maps.LatLng(37.484009, 127.125127)
+        },
+        {
+            title: '창신동 매운 족발',
+            latlng: new kakao.maps.LatLng(37.61299028, 127.0647188)
+        },
+        {
+            title: '다시 사랑한다면',
+            latlng: new kakao.maps.LatLng(37.4999646, 127.0440272)
+        },
+        {
+            title: '스시야',
+            latlng: new kakao.maps.LatLng(37.36327968, 127.1063578)
+        }
+    ];
+
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+    for (var i = 0; i < positions.length; i ++) {
+
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image : markerImage // 마커 이미지
+        });
+
+        // 마커에 표시할 인포윈도우를 생성합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: positions[i].title // 인포윈도우에 표시할 내용
+        });
+
+        // addListener가 js가 아닌 kakaoAPI 기능이다.
+        // 옛날 js기능이라서 착각하고 있다.
+        (function(markertemp, infowindowtemp) {
+            // kakao.maps.event.addListener(markertemp, 'mouseover', function() {
+            //     infowindowtemp.open(map, markertemp);
+            // });
+            // kakao.maps.event.addListener(markertemp, 'mouseout', function() {
+            //     infowindowtemp.close();
+            // });
+            kakao.maps.event.addListener(markertemp, 'click', function() {
+                infowindowtemp.open(map, markertemp);
+                // js 지연 실행, 얘도 클로저...
+                setTimeout(function(){
+                    infowindowtemp.close();
+                }, 1000);
+            });
+        })(marker, infowindow);
+    }
+
+</script>
+
+
+</body>
+</html>

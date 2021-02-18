@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MATZIP SEARCHER</title>
+
+    <!-- material design -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+</head>
+<body>
+
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+                <label class="mdl-button mdl-js-button mdl-button--icon"
+                       for="fixed-header-drawer-exp">
+                    <i class="material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" name="sample"
+                           id="fixed-header-drawer-exp">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+    </div>
+
+    <style>
+        .mdl-grid {
+            padding: 1em;
+            background-color: aliceblue;
+        }
+
+        .mdl-cell {
+            background-color: aliceblue;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .pageButtonContainer {
+            padding: 1em;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background-color: aliceblue;
+        }
+
+        #map {
+            width: 100%;
+            height: 50vh;
+        }
+
+        .table {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <!-- Your content goes here -->
+            <!-- Your content goes here -->
+            <!-- Your content goes here -->
+
+            <!-- 카테고리 버튼 -->
+            <div class="categoryButtons">
+                <div class="mdl-grid catBox">
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect " data-idx="s1">
+                            Category 1
+                        </button>
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-idx="s2">
+                            Category 2
+                        </button>
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-idx="s3">
+                            Category 3
+                        </button>
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--3-col">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-idx="s4">
+                            Category 4
+                        </button>
+                    </div>
+                </div>
+
+                <ul class="listContainer">
+                </ul>
+
+            </div>
+
+            <!-- 지도 영역 -->
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <!-- 카드 영역 -->
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col container">
+                    <!-- 카드 1 -->
+                    <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h4>
+                                Featured event:<br>
+                                May 24, 2016<br>
+                                7-11pm
+                            </h4>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                Add to Calendar
+                            </a>
+                            <div class="mdl-layout-spacer"></div>
+                            <i class="material-icons">event</i>
+                        </div>
+                    </div>
+                    <!-- 카드 2 -->
+                    <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h4>
+                                Featured event:<br>
+                                May 24, 2016<br>
+                                7-11pm
+                            </h4>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                Add to Calendar
+                            </a>
+                            <div class="mdl-layout-spacer"></div>
+                            <i class="material-icons">event</i>
+                        </div>
+                    </div>
+                    <!-- 카드 2 -->
+                    <div class="demo-card-event mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h4>
+                                Featured event:<br>
+                                May 24, 2016<br>
+                                7-11pm
+                            </h4>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                Add to Calendar
+                            </a>
+                            <div class="mdl-layout-spacer"></div>
+                            <i class="material-icons">event</i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- 테이블 영역 -->
+            <style>
+                .demo-list-three {
+                    width: 650px;
+                }
+            </style>
+
+            <div class="pageButtonContainer">
+                <!-- Three Line List with secondary info and action -->
+                <ul class="demo-list-three mdl-list">
+                    <li class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar">person</i>
+      <span>Bryan Cranston</span>
+      <span class="mdl-list__item-text-body">
+        Bryan Cranston played the role of Walter in Breaking Bad. He is also known
+        for playing Hal in Malcom in the Middle.
+      </span>
+    </span>
+                        <span class="mdl-list__item-secondary-content">
+      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+    </span>
+                    </li>
+                    <li class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons  mdl-list__item-avatar">person</i>
+      <span>Aaron Paul</span>
+      <span class="mdl-list__item-text-body">
+        Aaron Paul played the role of Jesse in Breaking Bad. He also featured in
+        the "Need For Speed" Movie.
+      </span>
+    </span>
+                        <span class="mdl-list__item-secondary-content">
+      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+    </span>
+                    </li>
+                    <li class="mdl-list__item mdl-list__item--three-line">
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons  mdl-list__item-avatar">person</i>
+      <span>Bob Odenkirk</span>
+      <span class="mdl-list__item-text-body">
+        Bob Odinkrik played the role of Saul in Breaking Bad. Due to public fondness for the
+        character, Bob stars in his own show now, called "Better Call Saul".
+      </span>
+    </span>
+                        <span class="mdl-list__item-secondary-content">
+      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+    </span>
+                    </li>
+                </ul>
+            </div>
+            <!-- TABLE OVER -->
+            <div class="pageButtonContainer">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    Prev
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    1
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    2
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    3
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    4
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    5
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    6
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    7
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    8
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    9
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    10
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    Next
+                </button>
+            </div>
+
+            <!-- FOOTER 영역 -->
+            <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer__middle-section">
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Features</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Updates</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Details</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">Specs</a></li>
+                            <li><a href="#">Tools</a></li>
+                            <li><a href="#">Resources</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">Technology</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">How it works</a></li>
+                            <li><a href="#">Patterns</a></li>
+                            <li><a href="#">Usage</a></li>
+                            <li><a href="#">Products</a></li>
+                            <li><a href="#">Contracts</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mdl-mega-footer__drop-down-section">
+                        <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer__heading">FAQ</h1>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li><a href="#">Questions</a></li>
+                            <li><a href="#">Answers</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <div class="mdl-mega-footer__bottom-section">
+                    <div class="mdl-logo">Title</div>
+                    <ul class="mdl-mega-footer__link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy & Terms</a></li>
+                    </ul>
+                </div>
+
+            </footer>
+
+            <!-- Your content ends here -->
+            <!-- Your content ends here -->
+            <!-- Your content ends here -->
+        </div>
+    </main>
+</div>
+<!-- 지도 스크립트-->
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42b464dbc4f0eb1befb41f996f717a37"></script>
+<script>
+    // 1. 지도 만들기
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(37.503266460295926, 127.02428068228997), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+</script>
+
+<script>
+    // 2. 마커 여러개 표시하기
+    // 마커를 표시할 위치와 title 객체 배열입니다
+    var positions = [
+        {
+            title: '사이공리',
+            latlng: new kakao.maps.LatLng(37.50708072, 126.939729)
+        },
+        {
+            title: '멘야시노기',
+            latlng: new kakao.maps.LatLng(37.503888, 127.020795)
+        },
+        {
+            title: '영동족발',
+            latlng: new kakao.maps.LatLng(37.48477547, 127.0379592)
+        },
+        {
+            title: '불불이족발',
+            latlng: new kakao.maps.LatLng(37.45639317, 126.8996724)
+        },
+        {
+            title: '홍보성',
+            latlng: new kakao.maps.LatLng(37.484009, 127.125127)
+        },
+        {
+            title: '창신동 매운 족발',
+            latlng: new kakao.maps.LatLng(37.61299028, 127.0647188)
+        },
+        {
+            title: '다시 사랑한다면',
+            latlng: new kakao.maps.LatLng(37.4999646, 127.0440272)
+        },
+        {
+            title: '스시야',
+            latlng: new kakao.maps.LatLng(37.36327968, 127.1063578)
+        }
+    ];
+
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+    for (var i = 0; i < positions.length; i++) {
+
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image: markerImage // 마커 이미지
+        });
+
+        // 마커에 표시할 인포윈도우를 생성합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: positions[i].title // 인포윈도우에 표시할 내용
+        });
+
+        // addListener가 js가 아닌 kakaoAPI 기능이다.
+        // 옛날 js기능이라서 착각하고 있다.
+        (function (markertemp, infowindowtemp) {
+            // kakao.maps.event.addListener(markertemp, 'mouseover', function() {
+            //     infowindowtemp.open(map, markertemp);
+            // });
+            // kakao.maps.event.addListener(markertemp, 'mouseout', function() {
+            //     infowindowtemp.close();
+            // });
+            kakao.maps.event.addListener(markertemp, 'click', function () {
+                infowindowtemp.open(map, markertemp);
+                // js 지연 실행, 얘도 클로저...
+                setTimeout(function () {
+                    infowindowtemp.close();
+                }, 1000);
+            });
+        })(marker, infowindow);
+    }
+
+</script>
+
+<script>
+    // button에 event 추가
+
+    var categoryButtons = document.querySelector(".categoryButtons")
+
+    categoryButtons.addEventListener("click",
+        function (e) {
+            // 원하는 버튼 구하기
+            var targetbutton = e.target.parentElement;
+            console.log("targetbutton", targetbutton);
+
+            // json 파일 이름
+            var targetFile = targetbutton.getAttribute("data-idx") + ".json";
+            console.log(targetFile);
+
+            // 출력하는 방법 2가지
+            // 1. createElement
+            // 2. innerHTML (성능이 더 좋으다 -> DOM처리를 한번만 하면 되기 때문)
+
+            // html추가
+            var ul = categoryButtons.querySelector("ul");
+            console.log("ul", ul);
+            // AJAX 설정, JSON 파일
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var str = this.responseText;
+                    var objarr = JSON.parse(str);//문자열을 오브젝트로변환
+                    console.log(objarr);
+
+                    // li 만들기
+                    var temp = "";
+                    for (var i = 0; i < objarr.length; ++i) {
+                        var tempobj = objarr[i];
+                        temp += "<li data-lat='" + tempobj.lat + "' data-lng='"
+                            + tempobj.lng + "' data-name='" + tempobj.name + "'>"
+                            + tempobj.name + "</li>";
+                    }
+                    console.log("temp", temp);
+
+                    // ul에 넣기
+                    ul.innerHTML = temp;
+                }
+            };
+            xhttp.open("GET", targetFile, true);
+            xhttp.send();
+        }, false
+    );
+
+    // list마다 이벤트 추가하기
+    // ".listContainer li"로 하면 안된다.
+    // 왜냐하면 script가 실행될때 DOM이 완성되어 있지 않아서
+    // 여기에 경도와 위도를 넣자...
+    document.querySelector(".listContainer").addEventListener("click", (e) => {
+        var target = e.target;
+        var lat = target.getAttribute("data-lat");
+        var lng = target.getAttribute("data-lng");
+        var name = target.getAttribute("data-name");
+        console.log(lat,lng,name);
+        // 이동할 위도 경도 위치를 생성합니다
+        var moveLatLon = new kakao.maps.LatLng(lat,lng);
+
+        // 지도 중심을 부드럽게 이동시킵니다
+        // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+        map.panTo(moveLatLon);
+    }, false);
+
+</script>
+
+</body>
+</html>
