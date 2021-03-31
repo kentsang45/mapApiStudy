@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>키워드로 장소검색하기</title>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=42b464dbc4f0eb1befb41f996f717a37&libraries=services,clusterer,drawing"></script>
+
+</head>
+<body>
+<div id="map" style="width:100%; height:100vh;"></div>
+
+
+<!-- 맛집 정보를 보여주는 div 입니다 -->
+
+
+<script>
+    $(document).ready(function () {
+        kakao.maps.load(function () {
+
+            function getMapByUrl() {
+                return fetch("https://dapi.kakao.com/v2/local/search/keyword.json?y=37.514322572335935&x=127.06283102249932&radius=20000",
+                    {
+                        method: 'post',
+                        headers: {'Content-Type': 'application/json'}
+                        ,body: JSON.stringify({
+                            query: '전북 삼성동 100',
+                            Authorization: 'KakaoAK {42b464dbc4f0eb1befb41f996f717a37}'
+                        })
+                    })
+                    .then(res => {
+
+                        if (!res.ok) {
+                            throw new Error(res);
+                        }
+                        console.log("=========== fetch done ==========")
+                        return res.json();
+                    }).catch(res => {
+                        console.log("============ catch ===============");
+                        console.log(res);
+                        return res;
+                    })
+            }
+
+
+            getMapByUrl();
+        })
+    })
+</script>
+
+
+</body>
+</html>
